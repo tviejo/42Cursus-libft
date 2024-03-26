@@ -6,7 +6,7 @@
 #    By: tviejo <tviejo@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/03/26 18:53:05 by tviejo            #+#    #+#              #
-#    Updated: 2024/03/26 19:26:20 by tviejo           ###   ########.fr        #
+#    Updated: 2024/03/26 19:40:02 by tviejo           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -28,7 +28,7 @@ OBJS		=	${SRCS:.c=.o}
 
 HEAD		=	./includes/
 
-CC		=	gcc
+CC		=	cc
 
 CFLAGS		=	-Wall -Wextra -Werror
 
