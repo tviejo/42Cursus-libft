@@ -1,23 +1,30 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strlen.c                                        :+:      :+:    :+:   */
+/*   ft_memset.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tviejo <tviejo@student.42.fr>              +#+  +:+       +#+        */
+/*   By: tviejo <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/03/26 10:20:43 by tviejo            #+#    #+#             */
-/*   Updated: 2024/03/26 13:01:45 by tviejo           ###   ########.fr       */
+/*   Created: 2024/03/26 12:59:34 by tviejo            #+#    #+#             */
+/*   Updated: 2024/03/26 13:25:10 by tviejo           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-size_t	ft_strlen(const char *s)
+void	*ft_memset(void *s, int c, size_t n)
 {
 	size_t	i;
+	char	*s2;
+	void	*s3;
 
+	s2 = (char *) s;
 	i = 0;
-	while (s[i] != '\0')
+	while (s2[i] != '\0' && i < n)
+	{
+		s2[i] = c;
 		i++;
-	return (i);
+	}
+	s3 = (void *)s2;
+	return (s3);
 }
 /*
 #include <string.h>
@@ -25,7 +32,7 @@ size_t	ft_strlen(const char *s)
 int	main(void)
 {
 	char s[] = "qwerty";
-	printf("%ld\n",ft_strlen(s));
-	printf("%ld",strlen(s));
+	printf("%s\n",(char *)ft_memset(s, 'a', 2));
+	printf("%s",(char *)memset(s, 'a', 2));
 }
 */
