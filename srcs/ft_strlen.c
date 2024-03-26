@@ -6,9 +6,11 @@
 /*   By: tviejo <tviejo@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/26 10:20:43 by tviejo            #+#    #+#             */
-/*   Updated: 2024/03/26 13:01:45 by tviejo           ###   ########.fr       */
+/*   Updated: 2024/03/26 19:22:57 by tviejo           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
+
+#include <stddef.h>
 
 size_t	ft_strlen(const char *s)
 {
