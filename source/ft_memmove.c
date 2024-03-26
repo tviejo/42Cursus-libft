@@ -1,37 +1,41 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_memcpy.c                                        :+:      :+:    :+:   */
+/*   ft_memmove.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: tviejo <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/26 12:59:34 by tviejo            #+#    #+#             */
-/*   Updated: 2024/03/26 14:38:14 by tviejo           ###   ########.fr       */
+/*   Updated: 2024/03/26 14:46:03 by tviejo           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <stddef.h>
+#include <stdint.h>
 
-void	*ft_memcpy(void *dest, const void *src, size_t n)
+void	*ft_memmove(void *dest, const void *src, size_t n)
 {
 	size_t	i;
+	char	*temp;
 
+	temp = (char *)src;
 	i = 0;
 	while (i < n)
 	{
-		((char *)dest)[i] = ((char *)src)[i];
+		((char *)dest)[i] = temp[i];
 		i++;
 	}
-	return ((void *)dest);
+	return (dest);
 }
 /*
 #include <string.h>
 #include <stdio.h>
 int	main(void)
 {
-	char dest[] = "abcdefg";
-	char src[] = "hijklmnop";
-	printf("%s\n",(char *)ft_memcpy(dest, src, 8));
-	printf("%s",(char *)memcpy(dest, src, 8));
+	char dest[] = "abcdef";
+	char src[] = "ghijklmnop";
+	printf("ft:%s\n",(char *)ft_memmove(dest, src, 7));
+
+	printf("libc:%s",(char *)memmove(dest, src, 7));
 }
 */
