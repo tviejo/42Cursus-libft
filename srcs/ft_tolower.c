@@ -1,19 +1,19 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_toupper.c                                       :+:      :+:    :+:   */
+/*   ft_tolower.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: tviejo <tviejo@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/26 10:20:43 by tviejo            #+#    #+#             */
-/*   Updated: 2024/03/26 16:35:15 by tviejo           ###   ########.fr       */
+/*   Updated: 2024/03/26 16:35:31 by tviejo           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-int	ft_toupper(int nb)
+int	ft_tolower(int nb)
 {
-	if (97 <= nb && nb <= 122)
-		return (nb - 32);
+	if (65 <= nb && nb <= 90)
+		return (nb + 32);
 	return (nb);
 }
 /*
@@ -21,7 +21,7 @@ int	ft_toupper(int nb)
 #include <stdio.h>
 int	main(void)
 {
-	printf("%c\n",ft_toupper('z'));
-	printf("%c",toupper('z'));
+	printf("%c\n",ft_tolower('A'));
+	printf("%c",tolower('A'));
 }
 */
