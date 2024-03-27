@@ -1,38 +1,41 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_bzero.c                                         :+:      :+:    :+:   */
+/*   ft_calloc.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: tviejo <tviejo@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/03/26 12:59:34 by tviejo            #+#    #+#             */
-/*   Updated: 2024/03/27 18:21:05 by tviejo           ###   ########.fr       */
+/*   Created: 2024/03/27 18:01:13 by tviejo            #+#    #+#             */
+/*   Updated: 2024/03/27 18:22:53 by tviejo           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stddef.h>
+#include <stdlib.h>
 
-void	ft_bzero(void *s, size_t n)
+void	*ft_calloc(size_t nelem, size_t elsize)
 {
+	char	*ptr;
 	size_t	i;
 
 	i = 0;
-	while (((char *)s)[i] != '\0' && i < n)
-	{
-		((char *)s)[i] = '\0';
-		i++;
-	}
+	ptr = malloc(nelem * elsize);
+	if (ptr == NULL)
+		return (NULL);
+	while (i++ <= nelem)
+		ptr[i] = 0;
+	return (ptr);
 }
 /*
-#include <string.h>
 #include <stdio.h>
 int	main(void)
 {
-	char s1[] = "qwerty";
-	printf("string1:%s ",s1);
-	ft_bzero(s1, 2);
-	printf("result ft:%s\n",s1);
-        bzero(s1, 2);
-        printf("result lib:%s\n",s1);
+	char	*ptr;
+
+	ptr = ft_calloc(10, sizeof(char));
+	printf("fonction: %s", ptr);
+	free(ptr);
+	ptr = calloc(10, sizeof(char));
+        printf("\noriginale: %s", ptr);
+        free(ptr);
 }
 */
