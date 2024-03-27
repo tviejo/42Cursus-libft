@@ -1,43 +1,53 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_substr.c                                        :+:      :+:    :+:   */
+/*   ft_strjoin.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: tviejo <tviejo@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/03/27 20:11:41 by tviejo            #+#    #+#             */
-/*   Updated: 2024/03/27 20:56:34 by tviejo           ###   ########.fr       */
+/*   Created: 2024/03/27 20:31:20 by tviejo            #+#    #+#             */
+/*   Updated: 2024/03/27 20:54:28 by tviejo           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <stddef.h>
 #include <stdlib.h>
 
-char	*ft_substr(char const *s, unsigned int start, size_t len)
+char	*ft_strjoin(char const *s1, char const *s2)
 {
-	char	*ptr;
+	int		size_s1;
+	int		size_s2;
 	int		i;
+	char	*ptr;
 
-	ptr = malloc(len * sizeof(char));
+	size_s1 = 0;
+	while (s1[size_s1] != '\0')
+		size_s1++;
+	size_s2 = 0;
+	while (s2[size_s2] != '\0')
+		size_s2++;
+	ptr = malloc((size_s1 + size_s2) * sizeof(char));
 	if (ptr == NULL)
 		return (NULL);
-	i = 0;
-	while (s[start + i] != '\0' || i < len)
+	i = -1;
+	while (++i < size_s1)
+		ptr[i] = s1[i];
+	while (i < (size_s1 + size_s2))
 	{
-		ptr[i] = s[start + i];
+		ptr[i] = s2[i - size_s1];
 		i++;
 	}
 	return (ptr);
 }
 /*
-#include <string.h>
 #include <stdio.h>
-int main(void)
+int	main(void)
 {
-        char    s1[] = "ABCDEGHIDEFJKLMNOP";
-        char    *s3;
+	char s1[] = "qwerty";
+	char s2[] = "azerty";
+	char *ptr;
 
-        s3 = ft_substr(s1, 145, 15);
-        printf("%s\n", s3);
+	ptr = ft_strjoin(s1, s2);
+	printf("%s", ptr);
 }
 */
