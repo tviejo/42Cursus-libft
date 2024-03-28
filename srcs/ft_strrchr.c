@@ -6,11 +6,11 @@
 /*   By: tviejo <tviejo@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/26 16:37:09 by tviejo            #+#    #+#             */
-/*   Updated: 2024/03/26 17:59:09 by tviejo           ###   ########.fr       */
+/*   Updated: 2024/03/28 21:03:48 by tviejo           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stddef.h>
+#include "libft.h"
 
 char	*ft_strrchr(const char *s, int c)
 {
@@ -32,7 +32,6 @@ char	*ft_strrchr(const char *s, int c)
 }
 /*
 #include <string.h>
-#include <stdio.h>
 int main(void)
 {
         char    s1[] = "ABCDEGHIDEFJELMNOP";

@@ -6,11 +6,11 @@
 /*   By: tviejo <tviejo@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/27 18:01:13 by tviejo            #+#    #+#             */
-/*   Updated: 2024/03/27 18:22:53 by tviejo           ###   ########.fr       */
+/*   Updated: 2024/03/28 15:49:16 by tviejo           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stdlib.h>
+#include "libft.h"
 
 void	*ft_calloc(size_t nelem, size_t elsize)
 {

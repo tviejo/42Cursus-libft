@@ -6,12 +6,11 @@
 /*   By: tviejo <tviejo@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/26 15:34:30 by tviejo            #+#    #+#             */
-/*   Updated: 2024/03/27 17:58:27 by tviejo           ###   ########.fr       */
+/*   Updated: 2024/03/28 15:52:55 by tviejo           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stddef.h>
-#include <stdlib.h>
+#include "libft.h"
 
 char	*ft_strdup(const char *src)
 {

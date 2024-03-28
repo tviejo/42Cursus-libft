@@ -6,9 +6,11 @@
 /*   By: tviejo <tviejo@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/26 18:07:47 by tviejo            #+#    #+#             */
-/*   Updated: 2024/03/27 17:39:16 by tviejo           ###   ########.fr       */
+/*   Updated: 2024/03/28 15:48:47 by tviejo           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
+
+#include "libft.h"
 
 int	ft_atoi(const char *str)
 {
