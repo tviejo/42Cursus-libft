@@ -6,10 +6,10 @@
 /*   By: tviejo <tviejo@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/27 20:57:40 by tviejo            #+#    #+#             */
-/*   Updated: 2024/03/27 21:07:14 by tviejo           ###   ########.fr       */
+/*   Updated: 2024/03/28 15:26:24 by tviejo           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-
+/*
 static char    *ft_strstr(char *str, char *to_find)
 {
         char    *str_temp;
@@ -43,4 +43,4 @@ static char    *ft_strstr(char *str, char *to_find)
 
 char *ft_strtrim(char const *s1, char const *set)
 {
-
+*/

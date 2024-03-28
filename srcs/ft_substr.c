@@ -6,7 +6,7 @@
 /*   By: tviejo <tviejo@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/27 20:11:41 by tviejo            #+#    #+#             */
-/*   Updated: 2024/03/27 20:56:34 by tviejo           ###   ########.fr       */
+/*   Updated: 2024/03/28 15:25:54 by tviejo           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@
 char	*ft_substr(char const *s, unsigned int start, size_t len)
 {
 	char	*ptr;
-	int		i;
+	size_t	i;
 
 	ptr = malloc(len * sizeof(char));
 	if (ptr == NULL)
