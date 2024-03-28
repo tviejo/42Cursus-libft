@@ -6,7 +6,7 @@
 /*   By: tviejo <tviejo@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/26 18:07:47 by tviejo            #+#    #+#             */
-/*   Updated: 2024/03/28 15:48:47 by tviejo           ###   ########.fr       */
+/*   Updated: 2024/03/28 23:23:36 by tviejo           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,9 +14,9 @@
 
 int	ft_atoi(const char *str)
 {
-	long int	cpt;
+	int			cpt;
 	int			sign;
-	long int	value;
+	long int			value;
 
 	cpt = 0;
 	value = 0;
@@ -34,6 +34,10 @@ int	ft_atoi(const char *str)
 		value = (value * 10) + (str[cpt] - '0');
 		cpt++;
 	}
+	/*
+	if (value > 2147483648)
+		return (0);
+	*/
 	return (value * sign);
 }
 /*
