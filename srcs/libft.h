@@ -6,13 +6,14 @@
 /*   By: tviejo <tviejo@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/28 15:43:40 by tviejo            #+#    #+#             */
-/*   Updated: 2024/03/28 21:07:50 by tviejo           ###   ########.fr       */
+/*   Updated: 2024/03/28 22:20:24 by tviejo           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef LIBFT_H
 # define LIBFT_H
 
+# include <unistd.h>
 # include <stddef.h>
 # include <stdlib.h>
 # include <stdio.h>

@@ -6,8 +6,26 @@
 /*   By: tviejo <tviejo@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/28 15:16:01 by tviejo            #+#    #+#             */
-/*   Updated: 2024/03/28 15:52:13 by tviejo           ###   ########.fr       */
+/*   Updated: 2024/03/28 22:19:47 by tviejo           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
+
+void	ft_putstr_fd(char *s, int fd)
+{
+	int	i;
+
+	i = 0;
+	while (s[i] != '\0')
+	{
+		write(fd, &s[i], 1);
+		i++;
+	}
+}
+/*
+int	main(void)
+{
+	ft_putstr_fd("qwerty", 1);
+}
+*/
