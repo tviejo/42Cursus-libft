@@ -6,7 +6,7 @@
 /*   By: tviejo <tviejo@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/26 18:07:47 by tviejo            #+#    #+#             */
-/*   Updated: 2024/03/28 23:23:36 by tviejo           ###   ########.fr       */
+/*   Updated: 2024/03/29 09:12:38 by tviejo           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,9 +14,9 @@
 
 int	ft_atoi(const char *str)
 {
-	int			cpt;
-	int			sign;
-	long int			value;
+	long long int			cpt;
+	int						sign;
+	unsigned long long int	value;
 
 	cpt = 0;
 	value = 0;
@@ -24,20 +24,19 @@ int	ft_atoi(const char *str)
 	while ((str[cpt] == ' ' || (9 <= str[cpt] && str[cpt] <= 13)))
 		cpt++;
 	if (str[cpt] == '-' || str[cpt] == '+')
-	{
-		if (str[cpt] == '-')
+		if (str[cpt++] == '-')
 			sign *= -1;
-		cpt++;
-	}
 	while ('0' <= str[cpt] && str[cpt] <= '9')
 	{
+		if (value > 9223372036854775807 && sign == 1)
+			return (-1);
+		else if (value > 9223372036854775807 && sign == -1)
+			return (0);
 		value = (value * 10) + (str[cpt] - '0');
 		cpt++;
 	}
-	/*
-	if (value > 2147483648)
-		return (0);
-	*/
+	if (value > 2147483647)
+		value = 1874919423;
 	return (value * sign);
 }
 /*
@@ -45,8 +44,18 @@ int	ft_atoi(const char *str)
 #include <stdio.h>
 int	main(void)
 {
-	printf("originale: %d\n", atoi("            -2147483648"));
-	printf("fonction: %d\n", ft_atoi("            -2147483648"));
+	printf("originale: %d\n", atoi("            9999999999999999"));
+	printf("fonction: %d\n", ft_atoi("            9999999999999999"));
+	printf("originale: %d\n", atoi("            -9999999999999999"));
+        printf("fonction: %d\n", ft_atoi("            -9999999999999999"));
+	printf("originale: %d\n", atoi("            999999999999999999999"));
+        printf("fonction: %d\n", ft_atoi("            999999999999999999999"));
+	printf("originale: %d\n", atoi("            9999999999999999999999"));
+        printf("fonction: %d\n", ft_atoi("            99999999999999999999999"));
+	printf("originale: %d\n", atoi("            -999999999999999999999"));
+        printf("fonction: %d\n", ft_atoi("            -999999999999999999999"));
+        printf("originale: %d\n", atoi("            -999999999999999999999"));
+        printf("fonction: %d\n", ft_atoi("            -9999999999999999999999"));
 	printf("\noriginale: %d\n", atoi("     +2147483647"));
 	printf("fonction: %d\n", ft_atoi("     +2147483647"));
 	printf("\noriginale:%d\n", atoi("-----+152 566"));
