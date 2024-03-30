@@ -6,7 +6,7 @@
 /*   By: tviejo <tviejo@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/26 18:00:47 by tviejo            #+#    #+#             */
-/*   Updated: 2024/03/30 15:20:24 by tviejo           ###   ########.fr       */
+/*   Updated: 2024/03/30 18:02:55 by tviejo           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,7 +43,7 @@ char	*ft_strnstr(const char *str, const char *to_find, size_t len)
 				return ((char *)str + i);
 		i++;
 	}
-	return ((char *)NULL);
+	return ((char *) NULL);
 }
 /*
 #include <string.h>

@@ -6,7 +6,7 @@
 /*   By: tviejo <tviejo@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/26 18:07:47 by tviejo            #+#    #+#             */
-/*   Updated: 2024/03/30 16:44:22 by tviejo           ###   ########.fr       */
+/*   Updated: 2024/03/30 18:01:07 by tviejo           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 int	ft_atoi(const char *str)
 {
-	unsigned long long int			cpt;
+	unsigned long long int	cpt;
 	int						sign;
 	unsigned long long int	value;
 
@@ -54,8 +54,8 @@ int	main(void)
         printf("fonction: %d\n", ft_atoi("            99999999999999999999999"));
 	printf("originale: %d\n", atoi("            -999999999999999999999"));
         printf("fonction: %d\n", ft_atoi("            -999999999999999999999"));
-        printf("originale: %d\n", atoi("            -99999999999999999999999"));
-        printf("fonction: %d\n", ft_atoi("            -999999999999999999999999"));
+        printf("originale: %d\n", atoi("            -999999999999999999999"));
+        printf("fonction: %d\n", ft_atoi("            -9999999999999999999999"));
 	printf("\noriginale: %d\n", atoi("     +2147483647"));
 	printf("fonction: %d\n", ft_atoi("     +2147483647"));
 	printf("\noriginale:%d\n", atoi("-----+152 566"));

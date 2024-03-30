@@ -6,7 +6,7 @@
 /*   By: tviejo <tviejo@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/26 16:37:09 by tviejo            #+#    #+#             */
-/*   Updated: 2024/03/30 16:40:36 by tviejo           ###   ########.fr       */
+/*   Updated: 2024/03/30 18:04:14 by tviejo           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,11 +14,11 @@
 
 char	*ft_strchr(const char *s, int character)
 {
-	int	i;
+	int		i;
 	char	c;
 
 	i = 0;
-	if (i == 256 || i == - 256)
+	if (i == 256 || i == -256)
 		return ("\0");
 	c = character;
 	while (s[i] != '\0')
