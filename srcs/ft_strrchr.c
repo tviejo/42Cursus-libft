@@ -6,17 +6,22 @@
 /*   By: tviejo <tviejo@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/26 16:37:09 by tviejo            #+#    #+#             */
-/*   Updated: 2024/03/28 21:03:48 by tviejo           ###   ########.fr       */
+/*   Updated: 2024/03/30 16:41:56 by tviejo           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-char	*ft_strrchr(const char *s, int c)
+char	*ft_strrchr(const char *s, int character)
 {
 	int		i;
 	char	*lastc;
+	char    c;
 
+        i = 0;
+        if (i == 256 || i == - 256)
+                return ("\0");
+        c = character;
 	lastc = NULL;
 	i = 0;
 	while (s[i] != '\0')

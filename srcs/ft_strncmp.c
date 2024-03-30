@@ -6,7 +6,7 @@
 /*   By: tviejo <tviejo@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/26 17:15:42 by tviejo            #+#    #+#             */
-/*   Updated: 2024/03/28 15:54:31 by tviejo           ###   ########.fr       */
+/*   Updated: 2024/03/30 13:15:07 by tviejo           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,8 +21,13 @@ int	ft_strncmp(const char *s1, const char *s2, size_t n)
 		&& counter < n && s1[counter] == s2[counter])
 		counter++;
 	if (counter == n)
+                return (0);
+	else if (s1[counter] - s2[counter] > 0)
+		return (1);
+	else if (s1[counter] - s2[counter] < 0)
+                return (-1);
+	else
 		return (0);
-	return (s1[counter] - s2[counter]);
 }
 /*
 #include <stdio.h>

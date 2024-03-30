@@ -6,48 +6,53 @@
 /*   By: tviejo <tviejo@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/26 18:00:47 by tviejo            #+#    #+#             */
-/*   Updated: 2024/03/28 15:54:49 by tviejo           ###   ########.fr       */
+/*   Updated: 2024/03/30 15:20:24 by tviejo           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
+static int	ft_find(const char *str, const char *to_find, size_t len)
+{
+	size_t	i;
+
+	i = 0;
+	while (str[i] != '\0' && to_find[i] != '\0' && i < len)
+	{
+		if (str[i] != to_find[i])
+			return (0);
+		i++;
+	}
+	if (to_find[i] == '\0')
+		return (1);
+	else
+		return (0);
+}
+
 char	*ft_strnstr(const char *str, const char *to_find, size_t len)
 {
-	char	*str_temp;
-	size_t	cs;
-	size_t	cf;
+	size_t	i;
 
-	cs = 0;
-	cf = 0;
+	i = 0;
 	if (to_find[0] == '\0')
 		return ((char *)str);
-	while (str[cs] != '\0' && cs++ < len)
+	while (str[i] != '\0' && i < len)
 	{
-		if ((to_find[cf] == '\0') || ((str[cs] == to_find[cf])
-				&& (cf > 0) && (to_find[cf + 1] == '\0')))
-			return (str_temp);
-		else if ((str[cs] != to_find[cf]) && (cf > 0)
-			&& (to_find[cf] != '\0'))
-			cf = 0;
-		else if (str[cs] == to_find[cf] && cf > 0
-			&& to_find[cf] != '\0')
-			cf++;
-		if (str[cs] == to_find[cf] && cf++ == 0)
-			str_temp = &(((char *)str)[cs]);
+		if (str[i] == to_find[0])
+			if (ft_find(&str[i], to_find, len - i) == 1)
+				return ((char *)str + i);
+		i++;
 	}
-	return ("\0");
+	return ((char *)NULL);
 }
 /*
 #include <string.h>
 #include <stdio.h>
 int main(void)
 {
-        char    s1[] = "ABCDEGHIDEFJKLMNOP";
-        char    s2[] = "DEF";
-	char	*s3;
+        char    s1[] = "Hello Word!";
+        char    s2[] = "Hello Word!!";
 
-        s3 = ft_strnstr(s1, s2, 15);
-        printf("%s\n", s3);
+        printf("%s\n", ft_strnstr(s1, s2, 15));
 }
 */

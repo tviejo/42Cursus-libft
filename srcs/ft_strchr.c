@@ -6,17 +6,21 @@
 /*   By: tviejo <tviejo@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/26 16:37:09 by tviejo            #+#    #+#             */
-/*   Updated: 2024/03/28 15:52:35 by tviejo           ###   ########.fr       */
+/*   Updated: 2024/03/30 16:40:36 by tviejo           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-char	*ft_strchr(const char *s, int c)
+char	*ft_strchr(const char *s, int character)
 {
 	int	i;
+	char	c;
 
 	i = 0;
+	if (i == 256 || i == - 256)
+		return ("\0");
+	c = character;
 	while (s[i] != '\0')
 	{
 		if (s[i] == c)
@@ -34,14 +38,19 @@ char	*ft_strchr(const char *s, int c)
 int main(void)
 {
         char    s1[] = "ABCDEGHIDEFJKLMNOP";
-        char    s2 = '\0';
-	char	*s3;
+	int	c;
 
-	s3 = strchr(s1, s2);
-        printf("originale:%s", s3);
-	printf("  adresse:%p\n", s3);
-        s3 = ft_strchr(s1, s2);
-        printf("fonction:%s", s3);
-	printf("  adresse:%p\n", s3);
+	c = -300;
+	while (c < 300)
+	{
+		if (strchr(s1,c) != ft_strchr(s1, c))
+		{
+			printf("\n\noriginale: %s",strchr(s1,c));
+			printf("\nfonction:%s",ft_strchr(s1, c));
+			printf("\n%d",c);
+		}
+		c++;
+	}
+	return (0);
 }
 */

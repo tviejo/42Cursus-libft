@@ -6,26 +6,28 @@
 /*   By: tviejo <tviejo@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/26 12:59:34 by tviejo            #+#    #+#             */
-/*   Updated: 2024/03/28 23:10:48 by tviejo           ###   ########.fr       */
+/*   Updated: 2024/03/29 10:12:51 by tviejo           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
+static void	*ft_memrcpy(void *dest, const void *src, size_t n)
+{
+	while (n > 0)
+	{
+		((char *) dest)[n - 1] = ((char *) src)[n - 1];
+		--n;
+	}
+	return (dest);
+}
+
 void	*ft_memmove(void *dest, const void *src, size_t n)
 {
-	size_t	i;
-	char	*temp;
-
-	temp = (char *)src;
-	if (ft_strlen(dest) < n || ft_strlen(src) < n)
-		return (dest);
-	i = 0;
-	while (i < n)
-	{
-		((char *)dest)[i] = temp[i];
-		i++;
-	}
+	if (dest > src)
+		dest = ft_memrcpy(dest, src, n);
+	else
+		dest = ft_memcpy(dest, src, n);
 	return (dest);
 }
 /*
@@ -36,7 +38,6 @@ int	main(void)
 	char dest[] = "abcdef";
 	char src[] = "ghijklmnop";
 	printf("ft:%s\n",(char *)ft_memmove(dest, src, 9));
-
 	printf("libc:%s",(char *)memmove(dest, src, 9));
 }
 */

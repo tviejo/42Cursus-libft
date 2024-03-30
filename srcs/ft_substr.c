@@ -6,7 +6,7 @@
 /*   By: tviejo <tviejo@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/27 20:11:41 by tviejo            #+#    #+#             */
-/*   Updated: 2024/03/28 20:08:31 by tviejo           ###   ########.fr       */
+/*   Updated: 2024/03/30 15:30:18 by tviejo           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,15 +17,16 @@ char	*ft_substr(char const *s, unsigned int start, size_t len)
 	char	*ptr;
 	size_t	i;
 
-	ptr = malloc(len * sizeof(char));
+	ptr = malloc((len + 1) * sizeof(char));
 	if (ptr == NULL)
-		return (NULL);
+		return (ptr);
 	i = 0;
 	while (s[start + i] != '\0' && i < len)
 	{
 		ptr[i] = s[start + i];
 		i++;
 	}
+	ptr[i] = '\0';
 	return (ptr);
 }
 /*
@@ -36,6 +37,8 @@ int main(void)
         char    *s3;
 
         s3 = ft_substr(s1, 2, 4);
-        printf("%s\n", s3);
+        ft_putstr_fd(s3, 1);
+	free(s3);
+
 }
 */
