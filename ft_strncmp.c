@@ -6,7 +6,7 @@
 /*   By: tviejo <tviejo@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/26 17:15:42 by tviejo            #+#    #+#             */
-/*   Updated: 2024/03/30 18:01:41 by tviejo           ###   ########.fr       */
+/*   Updated: 2024/05/18 22:25:04 by tviejo           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,12 +22,8 @@ int	ft_strncmp(const char *s1, const char *s2, size_t n)
 		counter++;
 	if (counter == n)
 		return (0);
-	else if (s1[counter] - s2[counter] > 0)
-		return (1);
-	else if (s1[counter] - s2[counter] < 0)
-		return (-1);
 	else
-		return (0);
+		return ((unsigned char)s1[counter] - (unsigned char)s2[counter]);
 }
 /*
 #include <stdio.h>
@@ -51,5 +47,7 @@ int main(void)
 	printf("%d\n\n", strncmp(s1, s5, 4));
 	printf("%d\n", strncmp(s1, s6, 3));
 	printf("%d\n\n", ft_strncmp(s1, s6, 3));
+	printf("%d\n", strncmp("qwerty", "qwer\300ty", 10));
+        printf("%d\n\n", ft_strncmp("qwerty", "qwer\300ty", 10));
 }
 */

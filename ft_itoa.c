@@ -6,7 +6,7 @@
 /*   By: tviejo <tviejo@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/28 15:14:38 by tviejo            #+#    #+#             */
-/*   Updated: 2024/03/30 16:03:43 by tviejo           ###   ########.fr       */
+/*   Updated: 2024/05/18 22:54:09 by tviejo           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,6 +32,7 @@ long int	ft_len(long int nb)
 
 void	ft_convert(char *nbr_char, long int nb, long int leni)
 {
+	nbr_char[leni + 2] = '\0';
 	nbr_char[leni + 1] = '\0';
 	while (nb > 0)
 	{
@@ -61,17 +62,21 @@ char	*ft_itoa(int nb2)
 		nbr_char[0] = '0';
 		nbr_char[1] = '\0';
 	}
-	if (nb > 0)
+	else
 		ft_convert(nbr_char, nb, leni);
 	return (nbr_char);
 }
-/*
+
+#include <string.h>
+#include <stdlib.h>
 int	main(void)
 {
-	char *ptr;
-
-	ptr = ft_itoa(-2147483648);
-	ft_putstr_fd(ptr, 1);
-	free(ptr);
+	printf("%d\n", strcmp(ft_itoa(-456), "-456"));
+	printf("%d\n", strcmp(ft_itoa(125), "125"));
+	printf("%d\n", strcmp(ft_itoa(0), "0"));
+	printf("%d\n", strcmp(ft_itoa(-2147483648), "-2147483648"));
+	printf("%d\n", strcmp(ft_itoa(2147483647), "2147483647"));
+	printf("%d\n", strcmp(ft_itoa(-5), "-5"));
+	printf("%d\n", strcmp(ft_itoa(3), "3"));
+	printf("%d\n", strcmp(ft_itoa(-0), "0"));
 }
-*/

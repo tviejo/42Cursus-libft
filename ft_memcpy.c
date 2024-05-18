@@ -6,7 +6,7 @@
 /*   By: tviejo <tviejo@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/26 12:59:34 by tviejo            #+#    #+#             */
-/*   Updated: 2024/03/29 10:10:04 by tviejo           ###   ########.fr       */
+/*   Updated: 2024/05/18 22:25:27 by tviejo           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,11 +16,16 @@ void	*ft_memcpy(void *dest, const void *src, size_t n)
 {
 	size_t	i;
 
-	i = 0;
-	while (i < n)
-	{
-		((char *)dest)[i] = ((char *)src)[i];
-		i++;
+	if (dest == NULL && src == NULL)
+		return (dest);
+	if (n > 0)
+	{	
+		i = 0;
+		while (i < n)
+		{
+			((char *)dest)[i] = ((char *)src)[i];
+			i++;
+		}
 	}
 	return ((void *)dest);
 }
@@ -32,6 +37,14 @@ int	main(void)
 	char dest[] = "abcdefg";
 	char src[] = "hijklmnop";
 	printf("%s\n",(char *)ft_memcpy(dest, src, 8));
-	printf("%s",(char *)memcpy(dest, src, 8));
+	printf("%s\n",(char *)memcpy(dest, src, 8));
+	printf("%s\n",(char *)ft_memcpy((void *)0, src, 8));
+//        printf("%s",(char *)memcpy((void *)0, src, 8));
+//	printf("%s\n",(char *)ft_memcpy(NULL, NULL, 8));
+//        printf("%s",(char *)memcpy(NULL, NULL, 8));
+//	printf("%s\n",(char *)ft_memcpy(dest, NULL, 8));
+//        printf("%s",(char *)memcpy(dest, NULL, 8));
+	printf("%s\n",(char *)ft_memcpy(dest, src, 0));
+        printf("%s",(char *)memcpy(dest, src, 0));
 }
 */

@@ -6,7 +6,7 @@
 /*   By: tviejo <tviejo@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/26 17:51:47 by tviejo            #+#    #+#             */
-/*   Updated: 2024/05/18 20:17:51 by tviejo           ###   ########.fr       */
+/*   Updated: 2024/05/18 21:07:20 by tviejo           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,16 +17,13 @@ int	ft_memcmp(const void *s1, const void *s2, size_t n)
 	size_t	counter;
 	int		diff;
 
-	if (s1 != NULL && s2 != NULL)
+	counter = 0;
+	while (counter < n)
 	{
-		counter = 0;
-		while (counter < n)
-		{
-			diff = ((uint8_t *)s1)[counter] - ((uint8_t *)s2)[counter];
-			if (diff != 0)
-				return ((int )diff);
-			counter++;
-		}
+		diff = ((uint8_t *)s1)[counter] - ((uint8_t *)s2)[counter];
+		if (diff != 0)
+			return ((int )diff);
+		counter++;
 	}
 	return (0);
 }

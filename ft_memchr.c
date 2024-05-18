@@ -6,7 +6,7 @@
 /*   By: tviejo <tviejo@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/26 16:37:09 by tviejo            #+#    #+#             */
-/*   Updated: 2024/05/18 17:39:00 by tviejo           ###   ########.fr       */
+/*   Updated: 2024/05/18 21:08:04 by tviejo           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,8 +16,6 @@ void	*ft_memchr(const void *s, int c, size_t n)
 {
 	size_t	i;
 
-	if (s == NULL)
-		return (NULL);
 	c = (unsigned char) c;
 	i = 0;
 	while (i < n)
