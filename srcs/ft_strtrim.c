@@ -6,7 +6,7 @@
 /*   By: tviejo <tviejo@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/27 20:57:40 by tviejo            #+#    #+#             */
-/*   Updated: 2024/05/17 17:38:10 by tviejo           ###   ########.fr       */
+/*   Updated: 2024/05/18 16:16:09 by tviejo           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,11 +33,8 @@ static int	ft_lenstart(char const *s1, char const *set)
 	i = 0;
 	if (set != NULL)
 	{
-		while (s1[i] != '\0' && ft_charset(s1[i], set) == 0)
+		while (s1[i] != '\0' && ft_charset(s1[i], set) == 1)
 			i++;
-		i++;
-		if (ft_charset(s1[i - 1], set) == 0)
-			i = 0;
 	}
 	return (i);
 }
@@ -49,11 +46,8 @@ static int	ft_lenend(char const *s1, char const *set)
 	i = ft_strlen(s1);
 	if (set != NULL)
 	{
-		while (i > 0 && ft_charset(s1[i - 1], set) == 0)
+		while (i > 0 && ft_charset(s1[i - 1], set) == 1)
 			i--;
-		i--;
-		if (ft_charset(s1[i - 1], set) == 0)
-			i = ft_strlen(s1);
 	}
 	return (i);
 }
@@ -64,10 +58,16 @@ char	*ft_strtrim(char const *s1, char const *set)
 	size_t	end;
 	char	*ptr;
 
-	ptr = NULL;
 	if (set == NULL)
 		return ((char *)s1);
-	if (s1 != NULL)
+	if (s1 == NULL)
+	{
+		ptr = (char *)malloc(1 * sizeof(char));
+		if (ptr == NULL)
+			return (ptr);
+		ptr[0] = '\0';
+	}
+	else
 	{
 		start = ft_lenstart(s1, set);
 		end = ft_lenend(s1 + start, set);
@@ -80,7 +80,7 @@ char	*ft_strtrim(char const *s1, char const *set)
 int	main(void)
 {
 	printf("%s\n", ft_strtrim("qwertyasedfg", "m"));
-	printf("%s\n", ft_strtrim("qwertyyasyedyfg", "yaf"));
+	printf("%s\n", ft_strtrim("      q   qqqaqaaagqqq q qq", "q "));
 	printf("%s\n", ft_strtrim(NULL, "yaf"));
         printf("%s\n", ft_strtrim("qwertyyasyedyfg", NULL));
 	return (1);

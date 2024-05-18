@@ -6,29 +6,31 @@
 /*   By: tviejo <tviejo@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/28 15:14:25 by tviejo            #+#    #+#             */
-/*   Updated: 2024/05/17 16:52:41 by tviejo           ###   ########.fr       */
+/*   Updated: 2024/05/18 18:09:50 by tviejo           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-static size_t	ft_count_words(char const *s, char c)
+static int	ft_count_words(const char *str, char c)
 {
-	size_t	i;
-	size_t	nbwords;
+	int	nb_words;
+	int	i;
 
+	nb_words = 0;
 	i = 0;
-	nbwords = 0;
-	while (s[i] != '\0')
+	while (str[i] != '\0')
 	{
-		if (s[i] == c)
-			nbwords++;
+		if (i == 0 && str[i] != c)
+			nb_words++;
+		else if (str[i] == c && str[i + 1] != c && str[i + 1] != '\0')
+			nb_words++;
 		i++;
 	}
-	return (nbwords);
+	return (nb_words);
 }
 
-int	ft_len_words(const char *str, char c)
+static int	ft_len_words(const char *str, char c)
 {
 	int	i;
 	int	len_words;
@@ -43,7 +45,7 @@ int	ft_len_words(const char *str, char c)
 	return (len_words);
 }
 
-char	*ft_copy_line(const char *str, int len_words)
+static char	*ft_copy_line(const char *str, int len_words)
 {
 	char	*line;
 	int		k;
@@ -71,7 +73,7 @@ char	**ft_split(const char *str, char c)
 	output = NULL;
 	if (str != NULL)
 	{
-		output = (char **)malloc((ft_count_words(str, c) + 2) * sizeof(char *));
+		output = (char **)malloc((ft_count_words(str, c) + 1) * sizeof(char *));
 		if (output == 0)
 			return (0);
 		i = 0;
@@ -81,13 +83,14 @@ char	**ft_split(const char *str, char c)
 			if (str[i] != c)
 			{
 				len_words = ft_len_words(&str[i], c);
-				output[j++] = ft_copy_line(&str[i], len_words);
+				output[j] = ft_copy_line(&str[i], len_words);
 				i += len_words;
+				j++;
 			}
 			else
 				i++;
 		}
-		output[j] = NULL;
+		output[j] = 0;
 	}
 	return (output);
 }
@@ -98,7 +101,7 @@ int	main(void)
 	char	**output;
 	int	i;
 
-//	outputi = ft_count_words(str, charset);
+//	output = ft_count_words(str, charset);
 //	printf("%d" , outputi);
 //	output = ft_len_words(str, charset);
 //      printf("%d" , output);
@@ -107,24 +110,32 @@ int	main(void)
 	i = 0;
 	while (output[i] != NULL)
 	{
-        	printf("%s\n" , output[i]);
+        	printf("1: %s\n" , output[i]);
 		i++;
 	}
 	printf("\n");
+	output = ft_split("  qwerty  azerty  ", ' ');
+        i = 0;
+        while (output[i] != NULL)
+        {
+                printf("1: %s\n" , output[i]);
+                i++;
+        }
+        printf("\n");
 	output = ft_split(str, ' ');
         i = 0;
         while (output[i] != NULL)
         {
-                printf("%s\n" , output[i]);
+                printf("2: %s\n" , output[i]);
                 i++;
         }
 	printf("\n");
         output = ft_split(NULL, 'e');
-        i = 0;
-        while (output[i] != NULL)
-        {
-                printf("%s\n" , output[i]);
-                i++;
-        }
+//        i = 0;
+//        while (output[i] != NULL)
+//        {
+//                printf("3: %s\n" , output[i]);
+//                i++;
+//        }
 }
 */

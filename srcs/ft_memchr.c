@@ -6,7 +6,7 @@
 /*   By: tviejo <tviejo@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/26 16:37:09 by tviejo            #+#    #+#             */
-/*   Updated: 2024/05/16 12:58:11 by tviejo           ###   ########.fr       */
+/*   Updated: 2024/05/18 17:39:00 by tviejo           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,14 +34,15 @@ void	*ft_memchr(const void *s, int c, size_t n)
 int main(void)
 {
         char    s1[] = "ABCDEGHIDZEFJK\0LMNZOPQasdsa";
+	int	s2[] = {10,151,165,2121,1521521,151,121};
         char    c = 'Z';
 	char	c2 = 'Q';
 	char	*s3;
 
-	s3 = memchr(s1, c, 10);
+	s3 = memchr(s2, 2121, 10);
         printf("originale:%s", s3);
 	printf("  adresse:%p\n", s3);
-        s3 = ft_memchr(s1, c, 10);
+        s3 = ft_memchr(s2, 2121, 10);
         printf("fonction:%s", s3);
 	printf("  adresse:%p\n", s3);
 	printf("\n\n");
@@ -54,13 +55,13 @@ int main(void)
         printf("  adresse:%p\n", s3);
         printf("\n\n");
 	
-	s3 = memchr(NULL, c, 10);
-        printf("originale:%s", s3);
-        printf("  adresse:%p\n", s3);
-        s3 = ft_memchr(NULL, c, 10);
-        printf("fonction:%s", s3);
-        printf("  adresse:%p\n", s3);
-	printf("\n\n");
+//	s3 = memchr(NULL, c, 10);
+//        printf("originale:%s", s3);
+//        printf("  adresse:%p\n", s3);
+//        s3 = ft_memchr(NULL, c, 10);
+//        printf("fonction:%s", s3);
+//        printf("  adresse:%p\n", s3);
+//	printf("\n\n");
 	
 	s3 = memchr(s1, c, -10);
         printf("originale:%s", s3);
