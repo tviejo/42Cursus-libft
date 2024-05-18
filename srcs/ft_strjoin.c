@@ -6,7 +6,7 @@
 /*   By: tviejo <tviejo@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/27 20:31:20 by tviejo            #+#    #+#             */
-/*   Updated: 2024/03/28 15:53:19 by tviejo           ###   ########.fr       */
+/*   Updated: 2024/05/17 14:50:26 by tviejo           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,22 +19,29 @@ char	*ft_strjoin(char const *s1, char const *s2)
 	int		i;
 	char	*ptr;
 
-	size_s1 = 0;
-	while (s1[size_s1] != '\0')
-		size_s1++;
-	size_s2 = 0;
-	while (s2[size_s2] != '\0')
-		size_s2++;
-	ptr = malloc((size_s1 + size_s2) * sizeof(char));
-	if (ptr == NULL)
-		return (NULL);
-	i = -1;
-	while (++i < size_s1)
-		ptr[i] = s1[i];
-	while (i < (size_s1 + size_s2))
+	ptr = NULL;
+	if (s1 == NULL || s2 == NULL)
+		return (ptr);
+	else
 	{
-		ptr[i] = s2[i - size_s1];
-		i++;
+		size_s1 = 0;
+		while (s1[size_s1] != '\0')
+			size_s1++;
+		size_s2 = 0;
+		while (s2[size_s2] != '\0')
+			size_s2++;
+		ptr = malloc((size_s1 + size_s2 + 1) * sizeof(char));
+		if (ptr == NULL)
+			return (NULL);
+		i = -1;
+		while (++i < size_s1)
+			ptr[i] = s1[i];
+		while (i < (size_s1 + size_s2))
+		{
+			ptr[i] = s2[i - size_s1];
+			i++;
+		}
+		ptr[i] = '\0';
 	}
 	return (ptr);
 }
@@ -47,6 +54,12 @@ int	main(void)
 	char *ptr;
 
 	ptr = ft_strjoin(s1, s2);
-	printf("%s", ptr);
+	printf("%s\n", ptr);
+	ptr = ft_strjoin(NULL, s2);
+        printf("%s\n", ptr);
+	ptr = ft_strjoin(s1, NULL);
+        printf("%s\n", ptr);
+	ptr = ft_strjoin("\0", s2);
+        printf("%s\n", ptr);
 }
 */

@@ -6,7 +6,7 @@
 /*   By: tviejo <tviejo@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/28 15:43:40 by tviejo            #+#    #+#             */
-/*   Updated: 2024/05/17 14:55:33 by tviejo           ###   ########.fr       */
+/*   Updated: 2024/05/17 14:55:51 by tviejo           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,6 @@
 # include <stddef.h>
 # include <stdlib.h>
 # include <stdio.h>
-# include <stdint.h>
 
 typedef struct s_list
 {

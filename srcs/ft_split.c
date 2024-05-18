@@ -6,7 +6,7 @@
 /*   By: tviejo <tviejo@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/28 15:14:25 by tviejo            #+#    #+#             */
-/*   Updated: 2024/03/28 21:03:13 by tviejo           ###   ########.fr       */
+/*   Updated: 2024/05/17 16:52:41 by tviejo           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,7 +48,7 @@ char	*ft_copy_line(const char *str, int len_words)
 	char	*line;
 	int		k;
 
-	line = malloc((len_words + 1) * sizeof(char));
+	line = (char *)malloc((len_words + 1) * sizeof(char));
 	if (line == 0)
 		return (0);
 	k = 0;
@@ -68,25 +68,27 @@ char	**ft_split(const char *str, char c)
 	char	**output;
 	int		len_words;
 
-	if (!str)
-		return (0);
-	output = malloc((ft_count_words(str, c) + 1) * sizeof(char *));
-	if (output == 0)
-		return (0);
-	i = 0;
-	j = 0;
-	while (str[i] != '\0')
+	output = NULL;
+	if (str != NULL)
 	{
-		if (str[i] != c)
+		output = (char **)malloc((ft_count_words(str, c) + 2) * sizeof(char *));
+		if (output == 0)
+			return (0);
+		i = 0;
+		j = 0;
+		while (str[i] != '\0')
 		{
-			len_words = ft_len_words(&str[i], c);
-			output[j++] = ft_copy_line(&str[i], len_words);
-			i += len_words;
+			if (str[i] != c)
+			{
+				len_words = ft_len_words(&str[i], c);
+				output[j++] = ft_copy_line(&str[i], len_words);
+				i += len_words;
+			}
+			else
+				i++;
 		}
-		else
-			i++;
+		output[j] = NULL;
 	}
-	output[j] = NULL;
 	return (output);
 }
 /*
@@ -108,5 +110,21 @@ int	main(void)
         	printf("%s\n" , output[i]);
 		i++;
 	}
+	printf("\n");
+	output = ft_split(str, ' ');
+        i = 0;
+        while (output[i] != NULL)
+        {
+                printf("%s\n" , output[i]);
+                i++;
+        }
+	printf("\n");
+        output = ft_split(NULL, 'e');
+        i = 0;
+        while (output[i] != NULL)
+        {
+                printf("%s\n" , output[i]);
+                i++;
+        }
 }
 */

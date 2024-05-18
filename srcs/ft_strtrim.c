@@ -6,7 +6,7 @@
 /*   By: tviejo <tviejo@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/27 20:57:40 by tviejo            #+#    #+#             */
-/*   Updated: 2024/03/28 21:05:58 by tviejo           ###   ########.fr       */
+/*   Updated: 2024/05/17 17:38:10 by tviejo           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,7 +52,7 @@ static int	ft_lenend(char const *s1, char const *set)
 		while (i > 0 && ft_charset(s1[i - 1], set) == 0)
 			i--;
 		i--;
-		if (ft_charset(s1[i], set) == 0)
+		if (ft_charset(s1[i - 1], set) == 0)
 			i = ft_strlen(s1);
 	}
 	return (i);
@@ -65,6 +65,8 @@ char	*ft_strtrim(char const *s1, char const *set)
 	char	*ptr;
 
 	ptr = NULL;
+	if (set == NULL)
+		return ((char *)s1);
 	if (s1 != NULL)
 	{
 		start = ft_lenstart(s1, set);
@@ -77,7 +79,10 @@ char	*ft_strtrim(char const *s1, char const *set)
 #include <stdio.h>
 int	main(void)
 {
-	printf("%s", ft_strtrim("qwertyasedfg", "m"));
+	printf("%s\n", ft_strtrim("qwertyasedfg", "m"));
+	printf("%s\n", ft_strtrim("qwertyyasyedyfg", "yaf"));
+	printf("%s\n", ft_strtrim(NULL, "yaf"));
+        printf("%s\n", ft_strtrim("qwertyyasyedyfg", NULL));
 	return (1);
 }
 */

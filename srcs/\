@@ -6,7 +6,7 @@
 /*   By: tviejo <tviejo@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/27 18:01:13 by tviejo            #+#    #+#             */
-/*   Updated: 2024/05/17 12:03:49 by tviejo           ###   ########.fr       */
+/*   Updated: 2024/05/16 16:34:19 by tviejo           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,11 +14,12 @@
 
 void	*ft_calloc(size_t nelem, size_t elsize)
 {
-	void	*ptr;
-	const size_t	size = nelem * elsize;
+	char	*ptr;
+	size_t	size;
 
+	size = nelem * elsize;
 	ptr = NULL;
-	if (size == 0 || nelem <= SIZE_MAX / elsize)
+	if (size <= sizeof(size_t))
 		ptr = malloc(size);
 	if (ptr != NULL)
 		ft_bzero(ptr, size);
@@ -33,32 +34,23 @@ int	main(void)
 	ptr = ft_calloc(10, sizeof(char));
 	printf("fonction: %s", ptr);
 	free(ptr);
-//	ptr = calloc(10, sizeof(char));
-//        printf("\noriginale: %s", ptr);
-//        free(ptr);
+	ptr = calloc(10, sizeof(char));
+        printf("\noriginale: %s", ptr);
+        free(ptr);
 	printf("\n");
 	ptr = ft_calloc(0, sizeof(char));
         printf("fonction: %s", ptr);
         free(ptr);
-//        ptr = calloc(0, sizeof(char));
-//        printf("\noriginale: %s", ptr);
-//        free(ptr);
+        ptr = calloc(0, sizeof(char));
+        printf("\noriginale: %s", ptr);
+        free(ptr);
 	printf("\n");	
 	ptr = ft_calloc(252025256505020, 26252121251);
         printf("fonction: %s", ptr);
         free(ptr);
-//        ptr = calloc(252025256505020, 26252121251);
-//	printf("\noriginale: %s", ptr);
-//        free(ptr);
+        ptr = calloc(252025256505020, 26252121251);
+	printf("\noriginale: %s", ptr);
+        free(ptr);
 	printf("\n");
-        ptr = ft_calloc(2147483647, 2147483647);
-        printf("fonction: %s", ptr);
-        free(ptr);
-        ptr = ft_calloc(2147483647, 0);
-        printf("fonction: %s", ptr);
-        free(ptr);
-        ptr = ft_calloc(2147483647, -2147483647);
-        printf("fonction: %s", ptr);
-        free(ptr);
 }
 */

@@ -6,7 +6,7 @@
 /*   By: tviejo <tviejo@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/26 17:51:47 by tviejo            #+#    #+#             */
-/*   Updated: 2024/03/28 15:50:52 by tviejo           ###   ########.fr       */
+/*   Updated: 2024/05/16 14:57:14 by tviejo           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,39 +15,42 @@
 int	ft_memcmp(const void *s1, const void *s2, size_t n)
 {
 	size_t	counter;
+	int	diff;
 
-	counter = 0;
-	while (((unsigned char *)s1)[counter] != '\0'
-		&& ((unsigned char *)s2)[counter] != '\0'
-		&& counter < n
-		&& ((unsigned char *)s1)[counter] == ((unsigned char *)s2)[counter])
-		counter++;
-	if (counter == n)
-		return (0);
-	return (((unsigned char *)s1)[counter] - ((unsigned char *)s2)[counter]);
+	if (s1 != NULL && s2 != NULL)
+	{
+		counter = 0;
+		while (counter < n)
+		{
+			diff = ((unsigned char *)s1)[counter] - ((unsigned char *)s2)[counter];
+			if (diff != 0)
+				return ((int )diff);
+			counter++;
+		}
+	}
+	return (0);
 }
-
 /*
 #include <stdio.h>
 #include <string.h>
 int main(void)
 {
 	char	s1[] = "ABCD";
-	char	s2[] = "ABCD";
-	char    s3[] = "AB";
-	char    s4[] = "ABCDE";
-	char    s5[] = "ABCE";
 	char    s6[] = "ABCE";
 
-	printf("%d\n", ft_memcmp(s1, s2, 4));
-	printf("%d\n\n", memcmp(s1, s2, 4));
-	printf("%d\n", ft_memcmp(s1, s3, 4));
-	printf("%d\n\n", memcmp(s1, s3, 4));
-	printf("%d\n", ft_memcmp(s1, s4, 5));
-	printf("%d\n\n", memcmp(s1, s4, 5));
-	printf("%d\n", ft_memcmp(s1, s5, 4));
-	printf("%d\n\n", memcmp(s1, s5, 4));
-	printf("%d\n", ft_memcmp(s1, s6, 3));
-	printf("%d\n\n", memcmp(s1, s6, 3));
+	printf("ft: %d\n", ft_memcmp(s1, s6, 1));
+        printf("lib: %d\n\n", memcmp(s1, s6, 1));
+	printf("ft: %d\n", ft_memcmp(s1, s6, 3));
+	printf("lib: %d\n\n", memcmp(s1, s6, 3));
+	printf("ft: %d\n", ft_memcmp(s1, s6, 4));
+        printf("lib: %d\n\n", memcmp(s1, s6, 4));
+	printf("ft: %d\n", ft_memcmp(NULL, s6, 3));
+        printf("lib: %d\n\n", memcmp(NULL, s6, 3));
+	printf("ft: %d\n", ft_memcmp(s1, NULL, 3));
+        printf("lib: %d\n\n", memcmp(s1, NULL, 3));
+	printf("ft: %d\n", ft_memcmp(s1, s6, -10));
+        printf("lib: %d\n\n", memcmp(s1, s6, -10));
+	printf("ft: %d\n", ft_memcmp(s1, s6, 1000000000000000));
+        printf("lib: %d\n\n", memcmp(s1, s6, 1000000000000000));
 }
 */
