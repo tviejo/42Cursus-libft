@@ -6,7 +6,7 @@
 #    By: tviejo <tviejo@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/03/26 18:53:05 by tviejo            #+#    #+#              #
-#    Updated: 2024/05/17 10:58:38 by tviejo           ###   ########.fr        #
+#    Updated: 2024/05/18 20:36:53 by tviejo           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -25,15 +25,9 @@ BSRC		= ft_lstnew_bonus.c   ft_lstadd_front_bonus.c  ft_lstsize_bonus.c   ft_lst
 		  ft_lstadd_back_bonus.c ft_lstdelone_bonus.c  ft_lstclear_bonus.c  ft_lstiter_bonus.c     \
 		  ft_lstmap_bonus.c
 
-SRCS		=	${addprefix ${SRC_DIR}, ${SRC}}
+OBJS		=	${SRC:.c=.o}
 
-BSRCS            =       ${addprefix ${SRC_DIR}, ${BSRC}}
-
-OBJS		=	${SRCS:.c=.o}
-
-BOBJS            =       ${BSRCS:.c=.o}
-
-HEAD		=	./includes/
+BOBJS            =       ${BSRC:.c=.o}
 
 CC		=	cc
 
