@@ -6,7 +6,7 @@
 /*   By: tviejo <tviejo@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/28 15:14:38 by tviejo            #+#    #+#             */
-/*   Updated: 2024/05/18 22:54:09 by tviejo           ###   ########.fr       */
+/*   Updated: 2024/05/18 23:04:23 by tviejo           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,6 @@ long int	ft_len(long int nb)
 
 void	ft_convert(char *nbr_char, long int nb, long int leni)
 {
-	nbr_char[leni + 2] = '\0';
 	nbr_char[leni + 1] = '\0';
 	while (nb > 0)
 	{
@@ -66,7 +65,7 @@ char	*ft_itoa(int nb2)
 		ft_convert(nbr_char, nb, leni);
 	return (nbr_char);
 }
-
+/*
 #include <string.h>
 #include <stdlib.h>
 int	main(void)
@@ -80,3 +79,4 @@ int	main(void)
 	printf("%d\n", strcmp(ft_itoa(3), "3"));
 	printf("%d\n", strcmp(ft_itoa(-0), "0"));
 }
+*/
