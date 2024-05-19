@@ -6,13 +6,13 @@
 /*   By: tviejo <tviejo@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/28 15:14:38 by tviejo            #+#    #+#             */
-/*   Updated: 2024/05/18 23:04:23 by tviejo           ###   ########.fr       */
+/*   Updated: 2024/05/19 11:45:26 by tviejo           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-long int	ft_len(long int nb)
+static long int	ft_len(long int nb)
 {
 	int	i;
 
@@ -30,7 +30,7 @@ long int	ft_len(long int nb)
 	return (i);
 }
 
-void	ft_convert(char *nbr_char, long int nb, long int leni)
+static void	ft_convert(char *nbr_char, long int nb, long int leni)
 {
 	nbr_char[leni + 1] = '\0';
 	while (nb > 0)
@@ -40,17 +40,15 @@ void	ft_convert(char *nbr_char, long int nb, long int leni)
 	}
 }
 
-char	*ft_itoa(int nb2)
+static char	*ft_ltoa(long nb)
 {
 	long int	leni;
 	char		*nbr_char;
-	long int	nb;
 
-	nb = nb2;
 	leni = ft_len(nb);
 	nbr_char = (char *)malloc((leni + 2) * sizeof(char));
 	if (nbr_char == NULL)
-		return (nbr_char);
+		return (NULL);
 	if (nb < 0)
 	{
 		nbr_char[0] = '-';
@@ -65,6 +63,12 @@ char	*ft_itoa(int nb2)
 		ft_convert(nbr_char, nb, leni);
 	return (nbr_char);
 }
+
+char	*ft_itoa(int nb)
+{
+	return (ft_ltoa(nb));
+}
+
 /*
 #include <string.h>
 #include <stdlib.h>
