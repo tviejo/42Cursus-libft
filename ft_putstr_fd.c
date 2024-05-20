@@ -6,7 +6,7 @@
 /*   By: tviejo <tviejo@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/28 15:16:01 by tviejo            #+#    #+#             */
-/*   Updated: 2024/05/17 14:20:45 by tviejo           ###   ########.fr       */
+/*   Updated: 2024/05/20 16:19:59 by tviejo           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,17 +14,7 @@
 
 void	ft_putstr_fd(char *s, int fd)
 {
-	int	i;
-
-	i = 0;
-	if (s != NULL && fd > 0 && fd < 1024)
-	{
-		while (s[i] != '\0')
-		{
-			write(fd, &s[i], 1);
-			i++;
-		}
-	}
+	write(fd, &s[0], ft_strlen(s));
 }
 /*
 int	main(void)
