@@ -6,7 +6,7 @@
 /*   By: tviejo <tviejo@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/28 15:16:01 by tviejo            #+#    #+#             */
-/*   Updated: 2024/05/20 16:19:59 by tviejo           ###   ########.fr       */
+/*   Updated: 2024/05/20 18:24:27 by tviejo           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,11 +14,12 @@
 
 void	ft_putstr_fd(char *s, int fd)
 {
-	write(fd, &s[0], ft_strlen(s));
+	if (s != NULL)
+		write(fd, &s[0], ft_strlen(s));
 }
 /*
 int	main(void)
 {
-	ft_putstr_fd("qwerty", 1);
+	ft_putstr_fd("qwerty\n", 1);
 }
 */
