@@ -6,7 +6,7 @@
 /*   By: tviejo <tviejo@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/28 15:14:25 by tviejo            #+#    #+#             */
-/*   Updated: 2024/05/18 20:28:48 by tviejo           ###   ########.fr       */
+/*   Updated: 2024/05/20 17:56:09 by tviejo           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,58 +45,60 @@ static int	ft_len_words(const char *str, char c)
 	return (len_words);
 }
 
-static char	*ft_copy_line(const char *str, int len_words)
+static char	*ft_copy_line(const char **str, char c)
 {
 	char	*line;
-	int		k;
+	int		len_words;
 
+	while (**str == c)
+		++(*str);
+	len_words = ft_len_words(*str, c);
 	line = (char *)malloc((len_words + 1) * sizeof(char));
-	if (line == 0)
-		return (0);
-	k = 0;
-	while (k < len_words)
-	{
-		line[k] = str[k];
-		k++;
-	}
-	line[k] = '\0';
+	if (line == NULL)
+		return (NULL);
+	ft_strlcpy(line, *str, len_words + 1);
+	*str += len_words;
 	return (line);
 }
 
-static char	**ft_res(char **output, const char *str, char c)
+static void	ft_free(char **str)
 {
 	int	i;
-	int	j;
-	int	len_words;
 
-	output = (char **)malloc((ft_count_words(str, c) + 1) * sizeof(char *));
-	if (output == 0)
-		return (0);
 	i = 0;
-	j = 0;
-	while (str[i] != '\0')
+	while (str[i] != NULL)
 	{
-		if (str[i] != c)
-		{
-			len_words = ft_len_words(&str[i], c);
-			output[j++] = ft_copy_line(&str[i], len_words);
-			i += len_words;
-		}
-		else
-			i++;
+		free(str[i]);
+		i++;
 	}
-	output[j] = 0;
-	return (output);
+	free(str);
 }
 
 char	**ft_split(const char *str, char c)
 {
+	int		i;
+	int		nb_words;
 	char	**output;
 
-	output = NULL;
-	if (str != NULL)
+	if (str == NULL)
+		return (NULL);
+	nb_words = ft_count_words(str, c);
+	output = (char **)malloc((nb_words + 1) * sizeof(char *));
+	if (output != NULL)
 	{
-		output = ft_res(output, str, c);
+		i = 0;
+		output[nb_words] = NULL;
+		while (i < nb_words)
+		{
+			output[i] = ft_copy_line(&str, c);
+			if (output[i] == NULL)
+			{
+				ft_free(output);
+				output = NULL;
+				break ;
+			}
+			i++;
+		}
 	}
 	return (output);
 }
@@ -112,36 +114,39 @@ int	main(void)
 //	output = ft_len_words(str, charset);
 //      printf("%d" , output);
       
-	output = ft_split(str, 'e');
+	output = ft_split("lorem ipsum dolor sit amet, consectetur ", ' ');
 	i = 0;
-	while (output[i] != NULL)
+	while (output != NULL && output[i] != NULL)
 	{
         	printf("1: %s\n" , output[i]);
 		i++;
 	}
+	ft_free(output);
 	printf("\n");
 	output = ft_split("  qwerty  azerty  ", ' ');
-        i = 0;
-        while (output[i] != NULL)
-        {
-                printf("1: %s\n" , output[i]);
-                i++;
-        }
-        printf("\n");
-	output = ft_split(str, ' ');
         i = 0;
         while (output[i] != NULL)
         {
                 printf("2: %s\n" , output[i]);
                 i++;
         }
+	ft_free(output);
+        printf("\n");
+	output = ft_split(str, ' ');
+        i = 0;
+        while (output[i] != NULL)
+        {
+                printf("3: %s\n" , output[i]);
+                i++;
+        }
+	ft_free(output);
 	printf("\n");
-        output = ft_split(NULL, 'e');
+//        output = ft_split(NULL, 'e');
 //        i = 0;
-//        while (output[i] != NULL)
+//        while (output != NULL && output[i] != NULL)
 //        {
-//                printf("3: %s\n" , output[i]);
+//                printf("4: %s\n" , output[i]);
 //                i++;
 //        }
-}
-*/
+//	ft_free(output);
+}*/
