@@ -6,7 +6,7 @@
 /*   By: tviejo <tviejo@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/03 15:21:23 by tviejo            #+#    #+#             */
-/*   Updated: 2024/05/18 19:47:34 by tviejo           ###   ########.fr       */
+/*   Updated: 2024/05/22 14:02:56 by tviejo           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,8 @@ t_list	*ft_lstmap(t_list *lst, void *(*f)(void *), void (*del)(void *))
 		if (lsttemp == NULL)
 		{
 			ft_lstclear(&lstmap, del);
-			return (NULL);
+			lstmap = NULL;
+			return (lstmap);
 		}
 		ft_lstadd_back(&lstmap, lsttemp);
 		lst = lst->next;
