@@ -6,7 +6,7 @@
 /*   By: tviejo <tviejo@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/26 16:37:09 by tviejo            #+#    #+#             */
-/*   Updated: 2024/03/30 18:03:46 by tviejo           ###   ########.fr       */
+/*   Updated: 2024/05/22 13:22:45 by tviejo           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,9 +19,7 @@ char	*ft_strrchr(const char *s, int character)
 	char	c;
 
 	i = 0;
-	if (i == 256 || i == -256)
-		return ("\0");
-	c = character;
+	c = (char)character;
 	lastc = NULL;
 	i = 0;
 	while (s[i] != '\0')
@@ -49,5 +47,12 @@ int main(void)
         s3 = ft_strrchr(s1, s2);
         printf("fonction:%s", s3);
 	printf("  adresse:%p\n", s3);
+
+	s3 = strrchr(s1, 1000);
+        printf("\n\noriginale:%s", s3);
+        printf("  adresse:%p\n", s3);
+        s3 = ft_strrchr(s1, 1000);
+        printf("fonction:%s", s3);
+        printf("  adresse:%p\n", s3);
 }
 */
